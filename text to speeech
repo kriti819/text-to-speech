@@ -1,0 +1,86 @@
+from tkinter import *
+
+from gtts import gTTS    
+
+import os  
+
+root = Tk() 
+
+frame1 = Frame(root, 
+
+               bg = "lightPink",  
+
+               height = "250") 
+ 
+
+frame1.pack(fill = X) 
+
+frame2 = Frame(root,  
+
+               bg = "purple",  
+
+               height = "500") 
+
+frame2.pack(fill=X) 
+
+label = Label(frame1, text = "Text to Speech",  
+
+              font = "bold, 45", 
+
+              bg = "brown") 
+
+  
+
+label.place(x = 300, y = 70)    
+
+entry = Entry(frame2, width = 85,  
+
+              bd = 6, font = 20) 
+
+
+entry.place(x = 130, y = 52) 
+
+entry.insert(0, "")  
+
+def play():    
+
+    language = "en"
+
+  
+    myobj = gTTS(text = entry.get(), 
+
+                lang = language,  
+
+                slow = False) 
+ 
+
+    myobj.save("convert.wav") 
+
+    os.system("convert.wav") 
+
+   
+
+btn = Button(frame2, text = "CONVERT", 
+
+             width = "32", pady = 25, 
+
+             font = "bold, 15",  
+
+             command = play, bg='navyblue') 
+
+  
+
+btn.place(x = 325,  
+
+          y = 130) 
+
+  
+
+
+root.title("text_to_speech_convertor") 
+
+  
+
+root.geometry("1050x750+350+200") 
+
+root.mainloop()
